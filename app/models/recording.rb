@@ -1,7 +1,9 @@
 class Recording < ApplicationRecord
   include VideoUploader[:video]
 
-  validates_presence_of :title, :description, :video
+  belongs_to :student
+
+  validates_presence_of :title, :description, :video, :student_id
 
   # Make route URLs more obfuscated
   #def to_param
