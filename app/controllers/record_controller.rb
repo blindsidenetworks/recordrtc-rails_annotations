@@ -1,12 +1,11 @@
 class RecordController < ApplicationController
-  before_action :set_account
   before_action :set_recording, except: [:index, :new, :refresh_recordings]
 
   # GET /record
   def index
     @full_name = session[:full_name]
 
-    @recordings = @account.recordings
+    @recordings = Recording.all
   end
 
   # GET /record/:id
@@ -15,7 +14,7 @@ class RecordController < ApplicationController
 
   # GET /record/new
   def new
-    @recording = @account.recordings.new
+    @recording = Recording.new
   end
 
   # GET /record/:id/edit
@@ -23,7 +22,7 @@ class RecordController < ApplicationController
   end
 
   def refresh_recordings
-    @recordings = @account.recordings
+    @recordings = Recording.all
 
     respond_to do |format|
       format.js
@@ -31,11 +30,7 @@ class RecordController < ApplicationController
   end
 
   private
-  def set_account
-    @account = Account.find_or_create_by!(user_id: session[:user_id])
-  end
-
   def set_recording
-    @recording = @account.recordings.find(params[:id])
+    @recording = Recording.find(params[:id])
   end
 end

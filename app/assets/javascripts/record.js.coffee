@@ -266,7 +266,6 @@ $(document).on 'turbolinks:load', ->
         formData.append 'recording[title]', titleInput.val()
         formData.append 'recording[description]', descriptionInput.val()
         formData.append 'recording[video]', blob, fileName
-        formData.append 'recording[account_id]', accountInput.val()
 
         # Upload the form data
         makeXMLHttpRequest Routes.api_recordings_path(), 'POST', formData
@@ -367,7 +366,6 @@ $(document).on 'turbolinks:load', ->
       uploadForm = $('div#upload-form')
       titleInput = uploadForm.find 'input#title'
       descriptionInput = uploadForm.find 'textarea#description'
-      accountInput = uploadForm.children 'input#account_id'
       uploadBtn = uploadForm.children 'button#upload'
       progressBtn = uploadBtn.ladda()
       goBack = $('a#back')
