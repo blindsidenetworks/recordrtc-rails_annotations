@@ -9,7 +9,7 @@
 <div class="row">
   <div class="col-lg-6">
     <div class="embed-responsive embed-responsive-4by3">
-      <video src="<%= ENV['RAILS_RELATIVE_URL_ROOT'] + @recording.video.url %>" controls></video>
+      <video src="<%= ENV['RAILS_RELATIVE_URL_ROOT'] == '/' ? @recording.video.url : ENV['RAILS_RELATIVE_URL_ROOT'] + @recording.video.url %>" controls></video>
     </div>
   </div>
 
